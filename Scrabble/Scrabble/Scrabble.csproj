@@ -243,6 +243,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Member.cshtml" />
     <Content Include="Views\Interfaces\Index.cshtml" />
+    <Content Include="Views\Leaderboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
