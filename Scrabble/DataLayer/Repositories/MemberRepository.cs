@@ -18,8 +18,9 @@ namespace DataLayer.Repositories
 		public int Create(Member item)
 		{
 			var dbSet = Context.Set<Member>();
-
-			return 0;
+			dbSet.Add(item);
+			Context.SaveChanges();
+			return item.Id;
 		}
 
 		public Member Get(int id)

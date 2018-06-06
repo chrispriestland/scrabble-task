@@ -19,9 +19,9 @@ namespace DataLayer.Mappers
 			Property(m => m.TelephoneNumber).HasColumnName("TelephoneNumber").IsRequired();
 			Property(m => m.EmailAddress).HasColumnName("EmailAddress").IsRequired();
 			Property(m => m.Address1).HasColumnName("Address1").IsRequired();
-			Property(m => m.Address2).HasColumnName("Address2").IsRequired();
+			Property(m => m.Address2).HasColumnName("Address2").IsOptional();
 			Property(m => m.City).HasColumnName("City").IsRequired();
-			Property(m => m.Region).HasColumnName("Region");
+			Property(m => m.Region).HasColumnName("Region").IsOptional();
 			Property(m => m.PostCode).HasColumnName("PostCode").IsRequired();
 			Property(m => m.DateJoined).HasColumnName("DateJoined").IsRequired();
 

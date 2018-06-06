@@ -9,9 +9,9 @@ using System.Web.Mvc;
 
 namespace Scrabble.Controllers
 {
-	public class HomeController : BaseController
+	public class LeaderboardController : BaseController
 	{
-		public HomeController(IMemberServices memberServices) : base(memberServices)
+		public LeaderboardController(IMemberServices memberServices) : base(memberServices)
 		{ }
 
 		public ActionResult Index()
