@@ -55,14 +55,20 @@ namespace DomainLayer.Services
 						if (game.Players.Single(x => x.MemberId == memberId).Score > highestScore)
 						{
 							highestScore = game.Players.Single(x => x.MemberId == memberId).Score;
-							var otherPlayer = _memberRepository.Get(game.Players.Single(x => x.MemberId != memberId).MemberId);
+
+							string otherPlayerNames = null;
+							foreach(var member in game.Players.Where(x => x.MemberId != memberId))
+							{
+								var dataMember = _memberRepository.Get(member.MemberId);
+								otherPlayerNames += $"{dataMember.FirstName} {dataMember.LastName}, ";
+							}
 
 							highestScorePlayer = new HighestScore
 							{
 								GameDate = game.GameDate,
 								Location = game.Location,
 								Score = highestScore,
-								PlayedAgainstPlayerName = $"{otherPlayer.FirstName} {otherPlayer.LastName}"
+								PlayedAgainstPlayerName = otherPlayerNames != null ? otherPlayerNames.Substring(0, otherPlayerNames.Length - 2) : string.Empty
 							};
 						}
 					}
@@ -85,6 +91,11 @@ namespace DomainLayer.Services
 
 			return null;
 
+		}
+
+		public Dictionary<Member, double> GetTop10AverageScoresFromLeast10Matches()
+		{
+			return Mapper.Map<Dictionary<DataLayer.Models.Member, double>, Dictionary<Member, double>>(_gameRepository.GetTop10AverageScoresFromLeast10Matches());
 		}
 	}
 }

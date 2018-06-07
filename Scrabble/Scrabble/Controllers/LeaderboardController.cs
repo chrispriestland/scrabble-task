@@ -1,4 +1,5 @@
-﻿using DomainLayer;
+﻿using AutoMapper;
+using DomainLayer;
 using DomainLayer.Models;
 using Scrabble.Models;
 using System;
@@ -16,7 +17,11 @@ namespace Scrabble.Controllers
 
 		public ActionResult Index()
 		{
-			return View();
+			var leaderboard = _gameServices.GetTop10AverageScoresFromLeast10Matches();
+
+			var viewModel = Mapper.Map<Dictionary<Member, double>, Dictionary<MemberViewModel, double>>(leaderboard);
+			
+			return View(viewModel);
 		}
 	}
 }
