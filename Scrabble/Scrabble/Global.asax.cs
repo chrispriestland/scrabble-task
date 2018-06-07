@@ -8,9 +8,9 @@ using System.Web.Routing;
 using AutoMapper;
 using DataLayer;
 using DataLayer.Contracts;
-using DataLayer.Models;
 using DataLayer.Repositories;
 using DomainLayer;
+using DomainLayer.Models;
 using DomainLayer.Services;
 using Scrabble.Models;
 using Unity;
@@ -42,6 +42,8 @@ namespace Scrabble
 			_unityContainer.RegisterType<IMemberRepository, MemberRepository>();
 			_unityContainer.RegisterType<IUnitOfWork, DatabaseContext>();
 			_unityContainer.RegisterType<IMemberServices, MemberServices>();
+			_unityContainer.RegisterType<IGameRepository, GameRepository>();
+			_unityContainer.RegisterType<IGameServices, GameServices>();
 		}
 
 		private void SetupAutoMapper()
@@ -50,6 +52,8 @@ namespace Scrabble
 			{
 				cfg.CreateMap<MemberViewModel, Member>().ReverseMap();
 				cfg.CreateMap<Member, DataLayer.Models.Member>().ReverseMap();
+				cfg.CreateMap<Game, DataLayer.Models.Game>().ReverseMap();
+				cfg.CreateMap<Player, DataLayer.Models.Player>().ReverseMap();
 			});
 		}
 	}

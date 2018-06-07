@@ -14,6 +14,8 @@ namespace DataLayer
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 			modelBuilder.Configurations.Add(new MemberMapper());
+			modelBuilder.Configurations.Add(new GameMapper());
+			modelBuilder.Configurations.Add(new PlayerMapper());
 		}
 
 		public int Commit()
