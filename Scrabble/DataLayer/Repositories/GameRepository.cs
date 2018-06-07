@@ -27,5 +27,11 @@ namespace DataLayer.Repositories
 			var dbSet = Context.Set<Game>();
 			return dbSet.ToList();
 		}
+
+		public IQueryable<Game> GetGamesForMember(int memberId)
+		{
+			var dbSet = Context.Set<Game>();
+			return dbSet.Where(x => x.Players.Any(y => y.MemberId == memberId));
+		}
 	}
 }

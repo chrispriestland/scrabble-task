@@ -11,5 +11,6 @@ namespace DataLayer.Contracts
 	{
 		Game Get(int id);
 		List<Game> GetAll();
+		IQueryable<Game> GetGamesForMember(int memberId);
 	}
 }

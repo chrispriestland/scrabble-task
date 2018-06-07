@@ -1,7 +1,10 @@
-﻿@model Scrabble.Models.MemberViewModel
+﻿@model List<Scrabble.Models.MemberViewModel>
 
 <h1>Member Profiles</h1>
 
 <div class="row">
-    
+	@foreach (var member in Model)
+	{
+		<p><a href="@Url.Action("ProfilePage", "Home", new { memberId = member.Id })"><strong>@member.FirstName @member.LastName</strong></a></p>
+	}
 </div>

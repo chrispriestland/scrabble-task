@@ -1,0 +1,19 @@
+﻿@model Scrabble.Models.ProfileViewModel
+
+<h1>Member Profile for @Model.Member.FirstName @Model.Member.LastName</h1>
+
+@if (Model.GameStatistics != null)
+{
+
+	<p>Wins: @Model.GameStatistics.Wins</p>
+	<p>Loses: @Model.GameStatistics.Loses</p>
+	<p>Average Score: @Model.GameStatistics.AverageScore</p>
+	if (Model.GameStatistics.HighestScore != null)
+	{
+		<p>Highest Score: @Model.GameStatistics.HighestScore.Score scored on @Model.GameStatistics.HighestScore.GameDate.ToShortDateString() at @Model.GameStatistics.HighestScore.Location against @Model.GameStatistics.HighestScore.PlayedAgainstPlayerName</p>
+	}
+}
+else
+{
+	<p>No Games Played yet</p>
+}

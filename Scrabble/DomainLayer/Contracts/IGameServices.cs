@@ -11,5 +11,6 @@ namespace DomainLayer
 	{
 		List<Game> GetGames();
 		Game GetGame(int gameId);
+		GameStatistics GetGameStatisticsForMember(int memberId);
 	}
 }

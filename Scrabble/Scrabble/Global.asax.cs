@@ -54,6 +54,8 @@ namespace Scrabble
 				cfg.CreateMap<Member, DataLayer.Models.Member>().ReverseMap();
 				cfg.CreateMap<Game, DataLayer.Models.Game>().ReverseMap();
 				cfg.CreateMap<Player, DataLayer.Models.Player>().ReverseMap();
+				cfg.CreateMap<GameStatistics, GameStatisticsViewModel>().ReverseMap();
+				cfg.CreateMap<Player, PlayerViewModel>().ReverseMap();
 			});
 		}
 	}

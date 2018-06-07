@@ -13,7 +13,7 @@ namespace Scrabble.Controllers
 {
 	public class InterfacesController : BaseController
 	{
-		public InterfacesController(IMemberServices memberServices) : base(memberServices)
+		public InterfacesController(IMemberServices memberServices, IGameServices  gameServices) : base(memberServices, gameServices)
 		{ }
 
 		public ActionResult Index()

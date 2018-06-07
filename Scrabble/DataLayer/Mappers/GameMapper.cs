@@ -17,7 +17,7 @@ namespace DataLayer.Mappers
 			Property(x => x.GameDate).HasColumnName("GameDate").IsRequired();
 
 			HasMany(x => x.Players)
-				.WithOptional()
+				.WithRequired()
 				.HasForeignKey(s => s.GameId)
 				.WillCascadeOnDelete(false);
 

@@ -11,7 +11,7 @@ namespace Scrabble.Controllers
 {
 	public class LeaderboardController : BaseController
 	{
-		public LeaderboardController(IMemberServices memberServices) : base(memberServices)
+		public LeaderboardController(IMemberServices memberServices, IGameServices gameServices) : base(memberServices, gameServices)
 		{ }
 
 		public ActionResult Index()
