@@ -3,20 +3,7 @@
 <h1>Interfaces</h1>
 
 <div class="row">
-    <h2>Create Member Profile</h2>
-	<div id="createMemberResults"></div>
-	@using (Ajax.BeginForm("CreateMember", "Home", new AjaxOptions
-	{
-		HttpMethod = "Post",
-		InsertionMode = InsertionMode.Replace,
-		OnBegin = "createMemberBegin()",
-		OnFailure = "createMemberFailure()",
-		OnSuccess = "createMemberSuccess(data)",
-	}, new { id = "createMemberForm" }))
-	{
-		<div class="loading"></div>
-		<div id="fields">
-			@Html.EditorFor(x => x, "Member", null)
-		</div>
-	}
+	<p><a href="@Url.Action("CreateMemberProfile", "Interfaces")">Create Member Profile</a></p>
+	<p><a href="@Url.Action("EditMemberProfiles", "Interfaces")">Edit Member Profiles</a></p>
+
 </div>

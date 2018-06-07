@@ -1,0 +1,11 @@
+﻿@model List<Scrabble.Models.MemberViewModel>
+
+<h1>Interfaces</h1>
+
+<div class="row">
+    <h2>Edit Member Profiles</h2>
+	@foreach (var member in Model)
+	{
+		<p><strong>@member.FirstName @member.LastName</strong> <a href="@Url.Action("EditMember", "Interfaces", new { memberId = member.Id })">edit</a></p>
+	}
+</div>

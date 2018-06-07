@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using DataLayer.Contracts;
 using DomainLayer.Models;
 
@@ -19,20 +20,23 @@ namespace DomainLayer.Services
 
 		public int Create(Member member)
 		{
-			var dataMember = new DataLayer.Models.Member
-			{
-				FirstName = member.FirstName,
-				LastName = member.LastName,
-				TelephoneNumber = member.TelephoneNumber,
-				EmailAddress = member.EmailAddress,
-				Address1 = member.Address1,
-				Address2 = member.Address2,
-				City = member.City,
-				Region = member.Region,
-				PostCode = member.PostCode,
-				DateJoined = member.DateJoined
-			};
-			return _memberRepository.Create(dataMember);
+			return _memberRepository.Create(Mapper.Map<Member, DataLayer.Models.Member>(member));
+		}
+
+		public List<Member> GetMemberProfiles()
+		{
+			var members = _memberRepository.GetAll();
+			return Mapper.Map<List<DataLayer.Models.Member>, List<Member>>(members);
+		}
+
+		public Member GetMemberProfile(int memberId)
+		{
+			return Mapper.Map<DataLayer.Models.Member, Member>(_memberRepository.Get(memberId));
+		}
+
+		public void Update(Member member)
+		{
+			_memberRepository.Update(Mapper.Map<Member, DataLayer.Models.Member>(member));
 		}
 	}
 }

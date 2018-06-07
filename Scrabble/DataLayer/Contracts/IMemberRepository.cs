@@ -11,6 +11,7 @@ namespace DataLayer.Contracts
 	{
 		int Create(Member member);
 		Member Get(int id);
+		List<Member> GetAll();
 		void Update(Member member);
 	}
 }

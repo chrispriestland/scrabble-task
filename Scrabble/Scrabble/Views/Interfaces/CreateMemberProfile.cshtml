@@ -1,0 +1,22 @@
+﻿@model Scrabble.Models.MemberViewModel
+
+<h1>Interfaces</h1>
+
+<div class="row">
+    <h2>Create Member Profile</h2>
+	<div id="genericMemberResults"></div>
+	@using (Ajax.BeginForm("CreateMember", "Interfaces", new AjaxOptions
+	{
+		HttpMethod = "Post",
+		InsertionMode = InsertionMode.Replace,
+		OnBegin = "genericMemberBegin()",
+		OnFailure = "genericMemberFailure()",
+		OnSuccess = "createMemberSuccess(data)",
+	}, new { id = "createMemberForm" }))
+	{
+		<div class="loading"></div>
+		<div id="fields">
+			@Html.EditorFor(x => x, "Member", null)
+		</div>
+	}
+</div>

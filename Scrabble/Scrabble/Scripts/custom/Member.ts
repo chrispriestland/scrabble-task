@@ -1,19 +1,19 @@
-﻿function createMemberBegin(): void {
+﻿function genericMemberBegin(): void {
 	$(".loading").fadeIn();
-	$("#createMemberResults").html("Loading...");
+	$("#genericMemberResults").html("Loading...");
 }
 
-function createMemberFailure(): void {
+function genericMemberFailure(): void {
 	$(".loading").fadeOut();
-	$("#createMemberResults").fadeIn()
-	$("#createMemberResults").html("An Error Occured");	
+	$("#genericMemberResults").fadeIn();
+	$("#genericMemberResults").html("An Error Occured");	
 }
 
 function createMemberSuccess(data): void {
 	$(".loading").fadeOut();
-	$("#createMemberResults").fadeIn();
-	$("#createMemberResults").html("Create Member Result: " + data);
-	if (data == "True") {
+	$("#genericMemberResults").fadeIn();
+	$("#genericMemberResults").html(`Create Member Result: ${data}`);
+	if (data === "True") {
 		$("#FirstName").val("");
 		$("#LastName").val("");
 		$("#TelephoneNumber").val("");
@@ -24,4 +24,10 @@ function createMemberSuccess(data): void {
 		$("#Region").val("");
 		$("#PostCode").val("");
 	}
+}
+
+function updateMemberSuccess(data): void {
+	$(".loading").fadeOut();
+	$("#genericMemberResults").fadeIn();
+	$("#genericMemberResults").html(`Update Member Result: ${data}`);
 }

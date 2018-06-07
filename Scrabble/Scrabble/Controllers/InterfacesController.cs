@@ -4,8 +4,10 @@ using Scrabble.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Hosting;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 
 namespace Scrabble.Controllers
 {
@@ -19,24 +21,35 @@ namespace Scrabble.Controllers
 			return View();
 		}
 
+		public ActionResult CreateMemberProfile()
+		{
+			return View();
+		}
+
+		public ActionResult EditMemberProfiles()
+		{
+			var members = _memberServices.GetMemberProfiles();
+			var viewModel = Mapper.Map(members, new List<MemberViewModel>());
+			return View(viewModel);
+		}
+
+		public ActionResult EditMember(int memberId)
+		{
+			var member = _memberServices.GetMemberProfile(memberId);
+			var viewModel = Mapper.Map(member, new MemberViewModel());
+			return View(viewModel);
+		}
+
 		public bool CreateMember(MemberViewModel memberViewModel)
 		{
-			var domainMember = new Member
-			{
-				FirstName = memberViewModel.FirstName,
-				LastName = memberViewModel.LastName,
-				TelephoneNumber = memberViewModel.TelephoneNumber,
-				EmailAddress = memberViewModel.EmailAddress,
-				Address1 = memberViewModel.Address1,
-				Address2 = memberViewModel.Address2,
-				City = memberViewModel.City,
-				Region = memberViewModel.Region,
-				PostCode = memberViewModel.PostCode,
-				DateJoined = memberViewModel.DateJoined
-			};
+			var result = _memberServices.Create(Mapper.Map<MemberViewModel, Member>(memberViewModel));
+			return result > 0;
+		}
 
-			var result = _memberServices.Create(domainMember);
-			return result > 0 ? true : false;
+		public bool UpdateMember(MemberViewModel memberViewModel)
+		{
+			_memberServices.Update(Mapper.Map<MemberViewModel, Member>(memberViewModel));
+			return true;
 		}
 	}
 }

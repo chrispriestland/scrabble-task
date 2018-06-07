@@ -10,5 +10,8 @@ namespace DomainLayer
 	public interface IMemberServices
 	{
 		int Create(Member member);
+		List<Member> GetMemberProfiles();
+		Member GetMemberProfile(int memberId);
+		void Update(Member member);
 	}
 }
